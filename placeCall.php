@@ -6,7 +6,7 @@ include('./vendor/autoload.php');
 include('./config.php');
 
 $callerId = 'client:quick_start';
-$to = isset($_GET["to"]) ? $_GET["to"] : "identity";
+$to = isset($_GET["to"]) ? $_GET["to"] : "alice";
 
 $client = new Twilio\Rest\Client($API_KEY, $API_KEY_SECRET, $ACCOUNT_SID);
 
