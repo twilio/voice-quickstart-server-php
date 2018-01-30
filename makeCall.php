@@ -21,7 +21,7 @@ if (!isset($to) || empty($to)) {
 $callerNumber = '1234567890';
 
 $response = new Twilio\Twiml();
-if (empty($to) || !isset($to)) {
+if (!isset($to) || empty($to)) {
   $response->say('Congratulations! You have just made your first call! Good bye.');
 } else if (is_numeric(str_replace('', '+', $to))) {
   $dial = $response->dial(
