@@ -8,7 +8,11 @@ include('./config.php');
 $identity = 'alice';
 $callerNumber = '1234567890';
 $callerId = 'client:quick_start';
-$to = isset($_GET["to"]) ? $_GET["to"] : NULL;
+$to = isset($_GET["to"]) ? $_GET["to"] : "";
+if (!isset($to) || empty($to)) {
+  $to = isset($POST["to"]) ? $_POST["to"] : "";
+}
+
 
 $client = new Twilio\Rest\Client($API_KEY, $API_KEY_SECRET, $ACCOUNT_SID);
 
@@ -21,7 +25,7 @@ if (!isset($to) || empty($to)) {
       'url' => 'https://'.$_SERVER['HTTP_HOST'].'/incoming.php'
     )
   );
-} else if (is_numeric(str_replace('+', '', $to))) {
+} else if (is_numeric($to)) {
   $call = $client->calls->create(
     $to,           // Call this number
     $callerNumber, // From a valid Twilio number
