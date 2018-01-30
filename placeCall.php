@@ -21,7 +21,7 @@ if (!isset($to) || empty($to)) {
       'url' => 'https://'.$_SERVER['HTTP_HOST'].'/incoming.php'
     )
   );
-} else if (is_numeric(str_replace('', '+', $to))) {
+} else if (is_numeric(str_replace('+', '', $to))) {
   $call = $client->calls->create(
     $to,           // Call this number
     $callerNumber, // From a valid Twilio number
