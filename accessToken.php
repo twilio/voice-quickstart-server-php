@@ -9,7 +9,7 @@ use Twilio\Jwt\Grants\VoiceGrant;
 
 // Use identity and room from query string if provided
 $identity = isset($_GET["identity"]) ? $_GET["identity"] : NULL;
-if (empty($identity) || !isset($identity)) {
+if (!isset($identity) || empty($identity)) {
   $identity = isset($_POST["identity"]) ? $_POST["identity"] : "alice";
 }
 
