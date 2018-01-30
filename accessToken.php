@@ -8,7 +8,10 @@ use Twilio\Jwt\AccessToken;
 use Twilio\Jwt\Grants\VoiceGrant;
 
 // Use identity and room from query string if provided
-$identity = isset($_GET["identity"]) ? $_GET["identity"] : "identity";
+$identity = isset($_GET["identity"]) ? $_GET["identity"] : NULL;
+if (empty($identity) || !isset($identity)) {
+  $identity = isset($_POST["identity"]) ? $_POST["identity"] : "alice";
+}
 
 // Create access token, which we will serialize and send to the client
 $token = new AccessToken($ACCOUNT_SID, 

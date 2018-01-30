@@ -10,7 +10,10 @@ include('./vendor/autoload.php');
 include('./config.php');
 
 $callerId = 'client:quick_start';
-$to = isset($_POST["to"]) ? $_POST["to"] : "";
+$to = isset($_POST["to"]) ? $_POST["to"] : NULL;
+if (empty($to) || !isset($to)) {
+  $to = isset($_GET["to"]) ? $_GET["to"] : NULL;
+}
 
 /*
  * Use a valid Twilio number by adding to your account via https://www.twilio.com/console/phone-numbers/verified
@@ -20,7 +23,7 @@ $callerNumber = '1234567890';
 $response = new Twilio\Twiml();
 if (empty($to) || !isset($to)) {
   $response->say('Congratulations! You have just made your first call! Good bye.');
-} else if (strpos('+1234567890', $to[0])) {
+} else if (is_numeric($to)) {
   $dial = $response->dial(
     array(
   	  'callerId' => $callerNumber

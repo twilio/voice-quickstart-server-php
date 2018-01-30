@@ -18,3 +18,5 @@ $call = $client->calls->create(
       'url' => 'https://'.$_SERVER['HTTP_HOST'].'/incoming.php'
   )
 );
+
+print $call.sid;
