@@ -28,18 +28,13 @@ cp config.example.php config.php
 
 Edit `config.php` with your Twilio credentials.
 
-Next, we'll need to install the Twilio Helper library. Follow the instructions to install [Composer](https://getcomposer.org/).
-
-```bash
-# Once installation is done, move the executable to /usr/local/bin
-mv composer.phar /usr/local/bin/composer
-```
-
-Install the Twilio PHP helper library via Composer.
+Next, we'll need to install the Twilio Helper library via [Composer](https://getcomposer.org/).
 
 ```bash
 composer install
 ```
+
+If `composer install` fails ensure that you have added it correctly to your path by following the instructions on [Composer](https://getcomposer.org/).
 
 Now we should be all set! Run the application using the `php -S` command.
 
