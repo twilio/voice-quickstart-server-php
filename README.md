@@ -34,6 +34,8 @@ Next, we'll need to install the Twilio Helper library via [Composer](https://get
 composer install
 ```
 
+If `composer install` fails ensure that you have added it correctly to your path by following the instructions on [Composer](https://getcomposer.org/).
+
 Now we should be all set! Run the application using the `php -S` command.
 
 ```bash
